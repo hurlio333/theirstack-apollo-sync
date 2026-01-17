@@ -1,0 +1,9 @@
+# HTTP requests
+requests>=2.31.0
+
+# Google Sheets
+gspread>=6.0.0
+google-auth>=2.25.0
+
+# Environment management
+python-dotenv>=1.0.0
