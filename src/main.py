@@ -42,7 +42,7 @@ def main() -> int:
         apollo = ApolloClient(config)
         dedup = DeduplicationService(sheets)
 
-        logger.info(f"Fetching latest {config.sync_max_companies} companies that use Apollo.io")
+        logger.info(f"Fetching up to {config.sync_max_companies} companies that added Apollo.io in last {config.sync_lookback_days} days")
 
         # Fetch companies from TheirStack (sorted by most recent tech detection)
         companies = theirstack.search_companies_by_technology(

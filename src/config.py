@@ -18,7 +18,8 @@ class Config:
     theirstack_base_url: str = "https://api.theirstack.com/v1"
     apollo_base_url: str = "https://api.apollo.io/api/v1"
     google_sheet_name: str = "Sheet1"
-    sync_max_companies: int = 25  # Max 25 per request on free TheirStack plan
+    sync_max_companies: int = 200  # Total companies to fetch (paginated)
+    sync_lookback_days: int = 30  # How far back to look for new tech installations
     log_level: str = "INFO"
 
     @classmethod
@@ -33,6 +34,7 @@ class Config:
             google_service_account=json.loads(google_sa_json),
             google_sheet_id=os.environ["GOOGLE_SHEET_ID"],
             google_sheet_name=os.environ.get("GOOGLE_SHEET_NAME", "Sheet1"),
-            sync_max_companies=int(os.environ.get("SYNC_MAX_COMPANIES", "25")),
+            sync_max_companies=int(os.environ.get("SYNC_MAX_COMPANIES", "200")),
+            sync_lookback_days=int(os.environ.get("SYNC_LOOKBACK_DAYS", "30")),
             log_level=os.environ.get("LOG_LEVEL", "INFO"),
         )
